@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" Class="imgitem" CodeBehind="imgitem.ashx.cs"  %>

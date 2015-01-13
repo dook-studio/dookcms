@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="crm.master.cs" Inherits="Crm_crm" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="~/crm/css/default.css" id="mycss" runat="server" rel="stylesheet" type="text/css" />  
+    <script type="text/javascript" src="/crm/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            var selobj = null;
+            var selobjcolor = null;
+            $(".trnei,.lupai").each(function ()
+            {
+                $(this).click(function ()
+                {
+                    if (selobj != null)
+                    {                    
+                        selobj.css("background-color", selobjcolor);
+                    }                   
+                    selobjcolor = $(this).css("background-color");
+                    $(this).css("background-color", "#D1F880");
+                    selobj = $(this);
+                });
+
+            });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div style="padding: 0 0 0 2px;">
+        <asp:ContentPlaceHolder ID="cbody" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

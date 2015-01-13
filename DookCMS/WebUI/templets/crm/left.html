@@ -1,0 +1,19 @@
+﻿ var currTab = 'page700';
+var menu = {
+{#function var="topmenu" method="GetMenuData" type="crm"/} 
+{#foreach from="$topmenu" item="item" index="index"}{#if var="index" value="1" compare=">"},{/if}
+"page{$item.menuid}":{
+"text":"{$item.menuname}",
+"subtext":"{$item.menuname}",
+{#function var="cmenu" method="GetMenuData" type="crm" pid="$item.menuid" flag="1" /} 
+"default":"page{$cmenu.0.menuid}",
+"children":{
+   
+            {#foreach from="$cmenu" item="citem" index="cindex"}
+            {#if var="cindex" value="1" compare=">"},{/if}
+             "page{$citem.menuid}": { "text": "{$citem.menuname}", "url": "{#if var="citem.path" value="/" compare="^="}{$sys.url}{$citem.path}{#else/}{$sys.url}/crm/{$citem.path}{/if}" }
+            {/foreach}
+}
+}
+{/foreach}
+};

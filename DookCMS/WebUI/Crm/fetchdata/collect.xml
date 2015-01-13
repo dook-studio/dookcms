@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<collect>
+  <cname>百度贴吧采集</cname>
+  <type>0</type>
+  <encoding>utf-8</encoding>
+  <mode>0</mode><!--匹配模式 0=文章,1=图集-->
+  <encoding>utf-8</encoding>
+  
+  <!--防盗链 0=开启,1=关闭-->
+  <isdoorchain>1</isdoorchain>
+  <getlisttype>0</getlisttype>
+  <listurls><![CDATA[]]></listurls><!--列表网址s-->
+  <urlrules><![CDATA[网址起始]]></urlrules>
+  <urlrulee><![CDATA[网址结束]]></urlrulee>
+  <hasthumb>0</hasthumb><!--是否包含缩略图-->
+  <urlfilter></urlfilter><!--网址过滤正则表达式-->
+</collect>

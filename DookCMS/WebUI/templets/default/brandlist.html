@@ -1,0 +1,211 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>找品牌-青龙建材</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="{$sys.base}assets/i/favicon.png">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="{$sys.base}assets/i/app-icon72x72@2x.png">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="{$sys.base}assets/i/app-icon72x72@2x.png">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="{$sys.base}assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link rel="stylesheet" href="{$sys.base}assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="{$sys.base}assets/css/app.css">
+    <!--<style type="text/css">
+        .doc-block-grid li { padding: 0 5px 10px 5px; }
+        .doc-block-grid img { border: 1px solid #CCC; padding: 2px; background: #FFF; }
+    </style>-->
+</head>
+<body>
+    <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+      href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+    <!-- 页面内容 开发时删除 -->
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="/" class="">
+                <i class="am-header-icon am-icon-home"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="#">本市场品牌</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href="javascript:location.href = location.href;" class="">
+                <i class="am-header-icon am-icon-refresh"></i>
+            </a>
+        </div>
+    </header>
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+        <!--列表标题-->
+        <form method="get" action="/index.ashx">
+            <div data-am-sticky="{animation: 'slide-top'}">
+                <div class="am-input-group">
+                    <span class="am-input-group-btn">
+                        <button class="am-btn am-btn-default" type="submit"><span class="am-icon-search"></span> </button>
+                    </span>
+                    <input type="text" name="q" value="{$url.q.0}" class="am-form-field">
+                    <input type="hidden" name="bid" value="{$url.bid.0}" />
+                </div>
+            </div>
+        </form>
+        <div class="am-list-news-bd">
+            <ul class="am-list">
+                <!--缩略图在标题右边-->
+                {#set var="where" value=""  /}
+                {#if var="url.code.0" value="" compare="!="}
+                {#set var="where" value="$url.code.0" format="userlevel>-2 and (shopname is not null and brand='{0}')" /}
+                {/if}
+                {#if var="url.q.0" value="" compare="!="}
+                {#set var="where" value="$url.q.0" format="userlevel>-2 and (charindex('{0}',shopname)>0 or charindex('{0}',mobile)>0)" /}
+                {/if}
+                {#loop tbname="u_appshop" pagesize="20" cols="id,shopname,truename,mobile,address,brand,px,islock,shopid,userlevel" px="px desc,userlevel desc" where="$where"}
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class=" am-u-sm-7 am-list-main">
+                        <h3 class="am-list-item-hd">
+                            <a>{$item.shopname}</a>
+                            {#if var="item.userlevel" value="-1"}
+                            <span class="am-badge">未认证</span>
+                            {#elseif value="0"}
+                            <span class="am-badge am-badge-success">已认证</span>
+                            {#elseif value="1"}
+                            <span class="am-badge am-badge-warning">中级</span>
+                            {#elseif value="2"}
+                            <span class="am-badge am-badge-danger">高级</span>
+                            {/if} 
+                        </h3>
+                        <div class="am-list-item-text">
+                            联系人:{$item.truename}<br />电话:{$item.mobile}
+                        </div>
+                        <div class="am-list-item-text">地址:{$item.address}</div>
+                    </div>
+                    <div class="am-u-sm-3 am-list-thumb ">
+                        {#if var="item.islock" value="1"}
+                        <a href="/index.ashx?bid=13&id={$item.shopid}" class="am-btn am-btn-success am-padding-bottom-sm" style="padding:4px;">进入店铺</a>
+                        {#else/}
+                        <span class="am-btn am-badge am-padding-bottom-sm" style="padding:4px;">店铺未开通</span>
+                        {/if}
+                    </div>
+                </li>
+                {/loop}
+
+                <!--<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class=" am-u-sm-7 am-list-main">
+                        <h3 class="am-list-item-hd">
+                            <a href="http://www.douban.com/online/11614662/">声雷达卫浴</a><span class="am-badge am-badge-danger">高级</span>
+                        </h3>
+                        <div class="am-list-item-text">
+                            联系人:范冰冰<br />电话:15198113757 13982983768 028-7185763
+                        </div>
+                        <div class="am-list-item-text">地址:青龙国际建材城5区3栋101-105号 108-110号</div>
+                    </div>
+                    <div class="am-u-sm-3 am-list-thumb ">
+                        <a href="shopindex.html" class="am-btn am-btn-success am-padding-bottom-sm" style="padding:4px;">进入店铺</a>
+                    </div>
+                </li>
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class=" am-u-sm-7 am-list-main">
+                        <h3 class="am-list-item-hd">
+                            <a href="http://www.douban.com/online/11614662/">声雷达卫浴</a><span class="am-badge am-badge-warning">中级</span>
+                        </h3>
+                        <div class="am-list-item-text">
+                            联系人:范冰冰<br />电话:15198113757 13982983768 028-7185763
+                        </div>
+                        <div class="am-list-item-text">地址:青龙国际建材城5区3栋101-105号 108-110号</div>
+                    </div>
+                    <div class="am-u-sm-3 am-list-thumb ">
+                        <a href="shopindex.html" class="am-btn am-btn-success am-padding-bottom-sm" style="padding:4px;">进入店铺</a>
+                    </div>
+                </li>
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class=" am-u-sm-7 am-list-main">
+                        <h3 class="am-list-item-hd">
+                            <a href="http://www.douban.com/online/11614662/">声雷达卫浴</a><span class="am-badge am-badge-success">已认证</span>
+                        </h3>
+                        <div class="am-list-item-text">
+                            联系人:范冰冰<br />电话:15198113757 13982983768 028-7185763
+                        </div>
+                        <div class="am-list-item-text">地址:青龙国际建材城5区3栋101-105号 108-110号</div>
+                    </div>
+                    <div class="am-u-sm-3 am-list-thumb ">
+                        <a href="shopindex.html" class="am-btn am-btn-success am-padding-bottom-sm" style="padding:4px;">进入店铺</a>
+                    </div>
+                </li>
+                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right">
+                    <div class=" am-u-sm-7 am-list-main">
+                        <h3 class="am-list-item-hd">
+                            <a href="http://www.douban.com/online/11614662/">声雷达卫浴</a><span class="am-badge">未认证</span>
+                        </h3>
+                        <div class="am-list-item-text">
+                            联系人:范冰冰<br />电话:15198113757 13982983768 028-7185763
+                        </div>
+                        <div class="am-list-item-text">地址:青龙国际建材城5区3栋101-105号 108-110号</div>
+                    </div>
+                    <div class="am-u-sm-3 am-list-thumb ">
+                        <span  class="am-btn am-badge am-padding-bottom-sm" style="padding:4px;">店铺未开通</span>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <!--列表标题-->
+
+    <ul data-am-widget="pagination" class="am-pagination am-pagination-default">
+        <li>{#if var="url.pn.0" value=""}1{#else/}{$url.pn.0}{/if}/{$pagecount}</li>
+        {#pager  limit="2" pagesize="20" total="$total" option="first pre next last"  item='
+        <li class="am-pagination-prev "><a href="?bid=~bid~&pn=~index~&q=~q~">~itemname~</a></li>'  preitem='
+        <li class="am-pagination-prev "><a href="?bid=~bid~&pn=~index~&q=~q~">上页</a></li>'
+        nextitem='
+        <li class="am-pagination-next "><a href="?bid=~bid~&pn=~index~&q=~q~">下页</a></li>'
+        firstitem='
+        <li class="am-pagination-first "><a href="?bid=~bid~&pn=1&q=~q~">首页</a></li>'
+        lastitem='
+        <li class="am-pagination-last "><a href="?bid=~bid~&pn=~index~&q=~q~">末页</a></li>'
+        /}
+    </ul>
+    <div data-am-widget="gotop" class="am-gotop am-gotop-default">
+        <a href="#top" title="回到顶部">
+            <span class="am-gotop-title">回到顶部</span>
+            <i class="am-gotop-icon am-icon-chevron-up"></i>
+        </a>
+    </div>
+    <footer class="am-margin-top">
+        <hr />
+        <p class="am-text-center">
+            <small>by Yehome.cn 青龙建材 Team.</small>
+        </p>
+    </footer>
+    <!-- 以上页面内容 开发时删除 -->
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="{$sys.base}assets/js/polyfill/rem.min.js"></script>
+    <script src="{$sys.base}assets/js/polyfill/respond.min.js"></script>
+    <script src="{$sys.base}assets/js/amazeui.legacy.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="{$sys.base}assets/js/jquery.min.js"></script>
+    <script src="{$sys.base}assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+</body>
+</html>

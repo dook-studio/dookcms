@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>DukeyCMS 后台管理系统</title>
+<link href="{$sys.url}/templets/crm/style/css/main.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="/js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+    /* 当前所在选项卡 */
+    {#include file="left.html" charset="utf-8"/}
+    /* 菜单列表 */
+</script>
+<script type="text/javascript">
+    $.getCookie = function (sName) { var aCookie = document.cookie.split("; "); for (var i = 0; i < aCookie.length; i++) { var aCrumb = aCookie[i].split("="); if (sName == aCrumb[0]) return decodeURIComponent(aCrumb[1]); } return ''; }; $.setCookie = function (sName, sValue, sExpires) { var sCookie = sName + "=" + encodeURIComponent(sValue); if (sExpires != null) sCookie += "; expires=" + sExpires; document.cookie = sCookie; }; $.removeCookie = function (sName) { document.cookie = sName + "=; expires=Fri, 31 Dec 1999 23:59:59 GMT;"; };
+    var go, root = (location.href.match(/^http:\/\/[\d\w\.:]+\/?/i) || [''])[0]; if (!go) go = function (url) { if (url == null) url = root; else url = root + url; location.href = url };
+    jQuery(function () { jQuery("<frame/>").attr("id", "hidd-frame").attr("name", "hidd-frame").attr("frameborder", "no").attr("scrolling", "no").appendTo(document.body) });
+        $(function ()
+        {
+            $("#btnClearCache").click(function ()
+            {
+                //清空缓存
+                $.post("/ashx/crmop.ashx?ac=clearcache&rnd=" + Math.random(), {}, function (res)
+                {
+                    if (res == "ok")
+                    {
+                        alert("清理成功!");
+                    }
+                    else
+                    {
+                        alert("清理失败!");
+                    }
+                });
+            });
+
+            $("#btnReboot").click(function ()
+            {
+                //清空缓存
+                $.post("/ashx/crmop.ashx?ac=rebootsite&rnd=" + Math.random(), {}, function (res)
+                {
+                    if (res == "ok")
+                    {
+                        alert("重启成功,请刷新网页!");
+                    }
+                    else
+                    {
+                        alert(res);
+                    }
+                });
+            });
+        });
+</script>
+<script type="text/javascript" >var pntCopyright='<a href="http://cms.mou18.com" style="color:#666; text-decoration:none;">当前版本 2.0正式版</a>';</script>
+
+<script src="{$sys.url}/templets/crm/style/js/main_load.js" type="text/javascript" ></script>
+</head>
+<body>
+    <div class="back_nav">
+        <div class="back_nav_list">
+        </div>
+        <div class="shadow">
+        </div>
+        <div class="close_float">
+            <img src="{$sys.url}/templets/crm/style/images/close2.gif" />
+        </div>
+    </div>
+    <div class="model_nav">
+        <div class="model_nav_list" id="model_nav_list">
+            <ul style="margin-top:2px;"></ul>
+        </div>
+        <div class="model_float">
+            <img src="{$sys.url}/templets/crm/style/images/close2.gif" />
+        </div>
+    </div>
+    <div id="head">
+        <div id="logo">
+            <span style="display:block; position:relative; width:120px; height:68px; background-image:url('{$sys.url}/templets/crm/style/images/img/logo.gif');">
+                <label style=" position:absolute; width:300px; top:20px; font-family:微软雅黑; font-weight:bold; font-size:30px; color:#1c7ec7; letter-spacing:3px; border:0px;">
+                    <a href="/" style="color:#1c7ec7;text-decoration:none;" title="预览网站" target="_blank">都客CMS </a>
+                </label>
+            </span>
+        </div>
+        <div id="menu">  <a href="/"  class="menu_btn1" target="_blank">网站预览</a> 
+        <a style="cursor:pointer"  id="btnReboot" class="menu_btn1" >重启网站</a>      
+            <a style="cursor:pointer" id="iframe_refresh" class="menu_btn1"> 刷新</a> 
+            <a style="cursor:pointer" id="back_btn"><img src="{$sys.url}/templets/crm/style/images/tiring_room_nav.gif" alt=""/></a>
+            <div class="wel">
+                <label><img src="{$sys.url}/templets/crm/style/images/admin-ico.gif"  alt=""/></label>
+                <label>{#serverdata var="session" type="session" item="MyCrmUserName"  output="true"/} 您好！</label>
+                <a style="cursor:pointer" id="btnClearCache" style="font-weight:bold">清除缓存</a>
+                <a href="{$sys.url}/crm/login.aspx" style="font-weight:bold">安全退出</a> <a href="http://cms.mou18.com/help.html"  target="_blank">帮助中心</a>
+            </div>  
+        </div>
+        <ul id="nav">
+        </ul>
+        <div id="headBg">
+        </div>
+    </div>
+    <div id="content">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tr>
+                <td width="170" valign="top">
+                    <div id="leftMenus">
+                        <dl id="submenu">
+                            <dt><a class="ico1" id="submenuTitle" >正在加载请稍候...</a></dt>
+                        </dl>
+                        <dl id="history" class="history">
+                            <dt><a class="ico2" id="historyText" >正在加载请稍候...</a> </dt>
+                        </dl>
+                    </div>
+                </td>
+                <td width="1" valign="top">
+                    &nbsp;
+                </td>
+                <td valign="top">
+                    <iframe src="/crm.ashx?fn=right" frameborder="0" width="100%" height="100%" name="workspace" id="workspace">
+                    </iframe>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

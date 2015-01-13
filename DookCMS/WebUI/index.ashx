@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" Class="index" CodeBehind="index.ashx.cs"  %>

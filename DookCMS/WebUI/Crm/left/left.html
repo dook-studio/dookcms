@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>管理页面</title>
+		<link href="images/leftpage.css" rel="stylesheet" type="text/css" />
+		<script src="js/prototype.lite.js" type="text/javascript"></script>
+		<script src="js/moo.fx.js" type="text/javascript"></script>
+		<script src="js/moo.fx.pack.js" type="text/javascript"></script>
+		<style>
+		body {
+			font: 12px Arial, Helvetica, sans-serif;
+			color: #000;
+			background-color: #EEF2FB;
+			margin: 0px;
+		}
+.STYLE3 {color: #003399}
+        </style>
+	</head>
+
+	<body>
+		<table width="100%" height="280" border="0" cellpadding="0"
+			cellspacing="0" bgcolor="#EEF2FB">
+			<tr>
+				<td width="182" valign="top">
+					<div id="container">
+						<h1 class="type">
+							<a href="javascript:void(0)">系统管理</a>
+						</h1>
+						<div class="content">
+							<img src="images/menu22.gif" width="182" height="3" style="float:left" />
+								
+							<ul class="MM">
+							  <span class="STYLE3"></span>
+								<li>
+									<a href="center/xtgl_jsgl.html" target="main">角色管理</a>
+								</li>
+								<li>
+									<a href="admin/admin_manager.html" target="main">管理员管理</a>
+								</li>
+								<li>
+									<a href="center/xtgl_xtrz.html" target="main">权限管理</a>
+								</li>
+								<li>
+									<a href="center/xtgl_yhzgl.html" target="main">证书管理</a>
+								</li>
+								<li>
+									<a href="center/xtgl_sjjhgl.html" target="main">服务器管理</a>
+								</li>
+								<li>
+									<a href="center/xtgl_sjjhgl.html" target="main">认证进程管理</a>
+								</li>
+							</ul>
+								
+						</div>
+						<h1 class="type">
+							<a href="javascript:void(0)">软件管理</a>
+						</h1>
+						<div class="content">
+							<img src="images/menu22.gif" width="182" height="3" style="float:left" />
+							<ul class="MM">
+								
+								<li>
+									<a href="center/xtgl_yhgl.html" target="main">用户管理</a>
+								</li>
+							
+								<li>
+									<a href="center/xtgl_yhzgl.html" target="main">用户组管理</a>
+								</li>
+								<li>
+									<a href="center/xtgl_sjjhgl.html" target="main">令牌管理</a>
+								</li>
+								<li>
+									<a href="center/xtgl_sjjhgl.html" target="main">认证管理</a>
+								</li>
+							</ul>
+								
+						</div>
+						
+						<h1 class="type">
+							<a href="javascript:void(0)">报表统计</a>
+						</h1>
+						<div class="content">
+							<img src="images/menu22.gif" width="182" height="3" style="float:left" />
+							<ul class="MM">
+								<li>
+									<a href="center/tjfx_ysjtj.html" target="main">实时统计</a>
+								</li>
+								<li>
+									<a href="center/tjfx_gzltj.html" target="main">历史统计</a>
+								</li>
+								<li>
+									<a href="center/tjfx_xxgktj.html" target="main">信息统计</a>
+								</li>
+							</ul>
+								
+						</div>
+					<h1 class="type">
+							<a href="javascript:void(0)">用户分级管理</a>
+						</h1>
+						<div class="content">
+							<img src="images/menu22.gif" width="182" height="3" style="float:left" />
+							<ul class="MM">
+								<li>
+									<a href="center/xxgk_lcdy.html" target="main">用户管理</a>
+								</li>
+								
+							</ul>
+								
+						</div>
+					</div>
+					<script type="text/javascript">
+						var contents = document.getElementsByClassName('content');
+						var toggles = document.getElementsByClassName('type');
+					
+						var myAccordion = new fx.Accordion(
+							toggles, contents, {opacity: true, duration: 400}
+						);
+						myAccordion.showThisHideOpen(contents[0]);
+					</script>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

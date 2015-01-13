@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- <!CDATA[ url重写规则]]> -->
+<rewriteRules>
+  <![CDATA[处理图片]]>
+  <rewrite url="^(/.+(\.gif|\.png|\.jpg|\.ico|\.css|\.js)(\?.+)?)$" 	to="$1" processing="stop" />
+
+  <!-- 简单实现： 防止访问模板文件,非常有用 -->
+    <rewrite url="^/templets/([^\.]+)\.html$" to="~/" />
+  <!--首页重写-->
+
+  
+  <![CDATA[简单重写]]>
+  <!--<rewrite url="~/([^\.]+)/index.html$" to="~/template/$1/show.ashx" />-->
+  <rewrite url="~/list/([^\.]+).html$" to="~/?fn=list&amp;q=$1" processing="stop" />
+  <rewrite url="~/lists/([^\.]+).html$" to="~/?fn=list&amp;q=$1&amp;from=index" processing="stop" />
+  <rewrite url="~/cq/pay.html$" to="~/plugins/cq/pay.aspx" processing="stop" />
+  <rewrite url="~/signkey_([^\.]+).html$" to="~/plugins/pay/pay.aspx?signkey=$1" />
+  <rewrite url="~/signkey.html$" to="~/plugins/pay/pay.aspx" processing="stop" />
+
+  <rewrite url="~/xufee_([^\.]+).html$" to="~/plugins/pay/pay.aspx?xufee=$1" />
+
+
+  <rewrite url="~/sffsignkey_([^\.]+).html$" to="~/plugins/sffpay/pay.aspx?signkey=$1" />
+  <rewrite url="~/sffsignkey.html$" to="~/plugins/sffpay/pay.aspx" />
+  <rewrite url="~/sffxufee_([^\.]+).html$" to="~/plugins/sffpay/pay.aspx?xufee=$1" />
+
+  <rewrite url="~/tkjysoftsignkey_([^\.]+).html$" to="~/plugins/alipay/ui/tbksoftbuyorder.aspx?signkey=$1" />
+  <rewrite url="~/tkjysoftsignkey.html$" to="~/plugins/alipay/ui/tbksoftbuyorder.aspx" />
+  
+  <rewrite url="~/registercode.html$" to="~/plugins/pay/FindRegkey.aspx" />
+  <rewrite url="~/registercode_([^\.]+).html$" to="~/plugins/pay/FindRegkey.aspx?signkey=$1" />
+  <rewrite url="~/sffregistercode.html$" to="~/plugins/sffpay/FindRegkey.aspx" />
+  <rewrite url="~/sffregistercode_([^\.]+).html$" to="~/plugins/sffpay/FindRegkey.aspx?signkey=$1" />
+
+  <!-- 二级域名的简单实现 --><!--
+  <![CDATA[二级域名简单实现]]>
+  <if header="Host" match="([^\.]+?)\.blog\.debug\.l\.vmoom\.net">
+    --><!-- 保存用户名 --><!--
+    <set property="username" value="$1" />
+
+    --><!-- 为以 / 结尾的 url 自动添加默认文档 --><!--
+    <rewrite url="^~/.+/$" to="$0Default.aspx" processing="continue" />
+
+    --><!-- 重写到真实路径 --><!--
+    <rewrite url="^~/(([^/]+?/)*)([^\.]+?)(\..+?)$" to="~/Blog/$1$3.aspx?u=${username}" processing="stop" />
+  </if>-->
+  <![CDATA[处理分站首页]]>
+  <!--<if header="Host" match="(\b((?!www)\w)+\b)\.mou18\.com">
+    <set property="domain" value="$1" />
+    <rewrite url="~/$" to="~/html/${domain}.html" processing="stop" />
+  </if>-->
+</rewriteRules>

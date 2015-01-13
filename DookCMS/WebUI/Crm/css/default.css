@@ -1,0 +1,79 @@
+﻿/*---------公共元素---------------------------------------*/
+* { padding: 0; margin: 0; font-size: 12px; font-family: Arial,宋体,Tahoma; }
+body { padding: 12px; background-color: #fff; }
+table, tr, td { border-collapse: collapse; }
+input, img,select { vertical-align: middle; }
+input { padding: 2px; }
+input[type=text],input[type=password]{ padding: 4px 5px; border: #ABABAB 1px solid; box-shadow: 2px 2px 3px #EDEDED inset;}
+input[type=text]:focus,input[type=password]:focus{ background-color:#fafafa;}
+textarea { border: #ABABAB 1px solid; box-shadow: 2px 2px 3px #EDEDED inset;}
+img { border: 0; }
+ul, li { list-style-type: none; }
+/*--------------------------------------------------------*/
+
+/* 链接颜色 */
+a:link { color: #328916; text-decoration: none; }
+a:visited { color: #328916; text-decoration: none; }
+a:hover { color: #328916; text-decoration: underline; }
+a:active { color: #328916; }
+
+/*------------------公共类---------------------------------*/
+/*.content { margin: 0 auto; width: 980px; }*/
+
+.ptitle { padding: 5px; height: 17px; border: solid 1px #97C193; background: url(/crm/images/bgt.jpg) repeat-x; margin-top: 20px; font-weight: bold; font-size: 14px; }
+
+.inputtxt {  padding: 4px 5px; border: #ABABAB 1px solid; box-shadow: 2px 2px 3px #EDEDED inset; }
+
+.tblist tr td { padding: 5px; border: solid 1px #97C193; }
+.tblist tr td div td { padding: 0px; border: 0; }
+
+/*表格样式2*/
+.tb2 tr td { padding: 5px; border: solid 1px #C5E7C6; }
+.tb2 .nav { height: 28px; background: #ffffff url(../images/my/bg_grid_m.png) repeat-x; }
+.tb2 .nav td { font-weight: bold; font-size: 14px; color: #333; padding: 10px 20px; }
+.tb2 .bg { background-color: #F6FBF2; }
+.tb2 tr td:first-child { color: #333; text-align: right; }
+
+.non-border tr td { border: 0; }
+.non-border tr td:first-child { text-align: left; }
+.bg1 { background-color: #f2f9ff; }
+.hover { background-color: #BEE8F1; }
+
+/*nofloat*/
+div .nofloat { clear: both; }
+
+/*间距*/
+.pd5 { padding: 5px; }
+/*导航*/
+.nav { background-color: #446B8F; padding: 5px; color: #fff; }
+.b { border: solid 1px #97C193; }
+
+/*gridview样式定义开始---------------------------------------------------------------------------*/
+.gv1 { background-color: #9fd6ff; border: solid 1px #97C193; }
+
+.lup th { padding: 5px; height: 17px; border: solid 1px #97C193; background: url(/crm/images/bgt.jpg) repeat-x; margin-top: 20px; font-weight: normal; font-size: 14px;white-space:nowrap; }
+.lup th a:link, .lup th a:visited, .lup th a:hover { color: #333; }
+.lupai { background-color: #fff; }
+.lupai td { border: solid 1px #97C193; padding: 6px 4px; }
+.lupai td input { padding: 2px; border: solid 1px #999; }
+.trnei { background-color: #f2f9ff; }
+.trnei td { border: solid 1px #97C193; padding: 6px 4px; }
+.trnei td input { padding: 2px; border: solid 1px #999; }
+.gv1 input { padding: 3px 2px; border-color: #666; border-bottom: #ddd; border-right: #ddd; }
+/*gridview样式结束-------------------------------------------------------------------------------*/
+
+/*按钮------------------------------------------------------------*/
+.btn1 { background: url(../images/my/bg_btn1.png) no-repeat; height: 21px; width: 69px; text-align: center; line-height: 21px; margin: 10px 0px 5px 0px; display: block; color: #328916; }
+a.btn1:link { color: #328916; }
+a.btn1:visited { color: #328916; }
+
+input[type="text"] { padding:6px 4px; border: solid 1px #C3C3C3; border-top: solid 1px #7C7C7C; }
+
+.btn0 { background: url(../images/login/login_btn.png); border: 0px; color: rgb(36, 115, 162); cursor: pointer; font-weight: bold; height: 33px; width: 100px; }
+/*-------------------------------------------------------------------*/
+/*gridview的分页栏*/
+.gvpager { height: 17px; background-color: White; }
+.gvpager td { padding: 2px 4px; border: solid 1px #fff; }
+.gvpager td table tr td { border: none; }
+.gvpager td span { color: #EC6F3E; font-weight: bold; }
+.gvpager td a { color: blue; text-decoration: underline; }

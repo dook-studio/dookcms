@@ -1,0 +1,48 @@
+DEDE插件安装方法：后台-模块-上传新模块-浏览 选择.xml文件 确定-然后安装
+
+插件名称：DEDECMS自动采集伪原创高级版5.7测试版
+发布日期：2011年5月24日
+技术支持：织梦内容管理系统 V5.7
+支持版本：DEDECMS5.7
+主要功能: 全自动采集+伪原创（访客访问首页触发自动采集）
+
+
+DEDE插件如何安装请查询相关文章
+
+功能介绍：
+首页随机采集一篇文章，并更新首页和该文章及上个ID的文章（如果上个ID不是同栏目的话就不是上一篇文章）。
+列表页首先更新当前列表页及下一页。（第N页就是更新N和N+1页。客户看到永远是最新的）
+后台可以绑定栏目.请自行绑定
+自动生成TAG功能
+自动随机推荐，特荐，幻灯，头条
+
+使用说明：
+需要伪原创的请打开根目录下的word_replace.txt，进入采集节点管理那里导入
+
+自动采集方式
+首页在底部插入 <script src="/plus/spider.php"></script>
+列表页：
+
+在/include/common.func.php
+///增加一下函数///
+
+function spiderpage($str)
+{
+$a=explode('/',$str);
+if ($a)
+{
+$str=1;
+}
+return $str;
+}
+
+
+
+
+
+列表页代码如下 ：
+
+<script src="/plus/spider.php?id={dede:field.typeid/}&page={dede:pagelist listsize='0' listitem='pageno' function='trim(spiderpage(html2text(@me)))'/}"></script>
+
+代码加好后生成首页及列表页。
+刷新首页，OK，应该就有文章采集并更新了

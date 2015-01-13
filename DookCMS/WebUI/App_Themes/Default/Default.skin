@@ -1,0 +1,29 @@
+<asp:GridView runat="server" 
+    AutoGenerateColumns="false" 
+    Width="100%"   
+    CssClass = "gv1"
+    ShowFooter="false"    
+    cellspacing="0"
+    BorderWidth="0"
+    CellPadding="0"    
+    PageSize="18"
+    >
+    <RowStyle CssClass="lupai"/>
+    <HeaderStyle CssClass="lup" />
+    <AlternatingRowStyle CssClass="trnei" />    
+    <PagerStyle CssClass="gvpager" />
+</asp:GridView> 
+<asp:GridView runat="server" SkinID="gvcustomer"
+    AutoGenerateColumns="false" 
+    Width="100%"   
+    CssClass = "gv1"
+    ShowFooter="false"    
+    cellspacing="0"
+    BorderWidth="0"
+    CellPadding="0"        
+    >
+    <RowStyle CssClass="lupai"/>
+    <HeaderStyle CssClass="lup" />
+    <AlternatingRowStyle CssClass="trnei" />    
+    <PagerStyle CssClass="gvpager" />
+</asp:GridView> 

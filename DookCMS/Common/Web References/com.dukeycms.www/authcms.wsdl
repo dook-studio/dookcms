@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.dukeycms.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.dukeycms.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dukeycms.com/">
+      <s:element name="AuthUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="domain" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="dukeyauthcmsSoap">
+    <wsdl:operation name="AuthUser">
+      <wsdl:input message="tns:AuthUserSoapIn" />
+      <wsdl:output message="tns:AuthUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="dukeyauthcmsSoap" type="tns:dukeyauthcmsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthUser">
+      <soap:operation soapAction="http://www.dukeycms.com/AuthUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="dukeyauthcmsSoap12" type="tns:dukeyauthcmsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AuthUser">
+      <soap12:operation soapAction="http://www.dukeycms.com/AuthUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="dukeyauthcms">
+    <wsdl:port name="dukeyauthcmsSoap" binding="tns:dukeyauthcmsSoap">
+      <soap:address location="http://www.dukeycms.com/authcms.asmx" />
+    </wsdl:port>
+    <wsdl:port name="dukeyauthcmsSoap12" binding="tns:dukeyauthcmsSoap12">
+      <soap12:address location="http://www.dukeycms.com/authcms.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

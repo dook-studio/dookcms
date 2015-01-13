@@ -1,0 +1,148 @@
+﻿{#set var="where" value="$url.id.0" format="id={0}" /}
+{#function var="the" method="GetSingleData" type="index" table="u_appshopinfo" where="$where" /}
+  {#if var="the.shoplv" value="0"}
+        {#set var="typename" value="免费会员" /}
+        {#elseif value="1"}
+        {#set var="typename" value="中级会员" /}
+        {#elseif value="2"}
+        {#set var="typename" value="高级会员" /}
+        {/if}
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$the.shopname}-青龙建材</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="{$sys.base}assets/i/favicon.png">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="{$sys.base}assets/i/app-icon72x72@2x.png">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="{$sys.base}assets/i/app-icon72x72@2x.png">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="{$sys.base}assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link rel="stylesheet" href="{$sys.base}assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="{$sys.base}assets/css/app.css">
+    <!--<style type="text/css">
+        .doc-block-grid li { padding: 0 5px 10px 5px; }
+        .doc-block-grid img { border: 1px solid #CCC; padding: 2px; background: #FFF; }
+    </style>-->
+</head>
+<body>
+    <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+      href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+    <!-- 页面内容 开发时删除 -->
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="/" class="">
+                <i class="am-header-icon am-icon-home"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="/">{$the.shopname}</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href="#right-link" class="">
+                <i class="am-header-icon">{$typename}</i>
+            </a>
+        </div>
+    </header>
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2  am-gallery-bordered">
+        <li>
+            <div class="am-gallery-item">
+                <a href=""><img src="http://m.yehome.cn/images/brandlogo/10.png" style="max-width:200px;max-height:100px;" /></a>
+            </div>
+        </li>
+        <li>
+          <div>{$the.shopname}</div>
+            <p>{$typename} 第{$the.regyears}年</p>
+        </li>
+    </ul>
+    <ul class="am-nav am-nav-tabs am-nav-justify">
+        <li class="am-active"><a href="#">首页</a></li>
+        <li><a href="#">企业动态</a></li>
+        <li><a href="#">产品</a></li>
+        <li><a href="#">公司介绍</a></li>
+    </ul>
+
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+        <h2 class="am-titlebar-title">主营业务</h2>
+        <nav class="am-titlebar-nav">
+            <!--<a href="#more" class="">更多 &raquo;</a>-->
+        </nav>
+    </div>
+    <article data-am-widget="paragraph" class="am-paragraph am-paragraph-default"
+             data-am-paragraph="{ tableScrollable: true, pureview: true }"  style="color:#999999">
+        {$the.mainsale}
+    </article>
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+        <h2 class="am-titlebar-title">最新动态</h2>
+        <nav class="am-titlebar-nav">
+            <a href="#more" class="">更多 &raquo;</a>
+        </nav>
+    </div>
+    <div class="am-list-news-bd">
+        <ul class="am-list">    
+            {#set var="sql" format="select top 2 id,title from U_AppShopNotice where shopid={0} order by id desc"  value="$url.id.0"/}
+            {#loop sql="$sql" }
+            <li class="am-g am-list-item-desced">
+                <a href="/item.ashx?aid={$item.id}" class="am-list-item-hd">{$item.title}</a>
+                <div class="am-list-item-text">{$item.brief}</div>
+            </li>
+       {/loop}
+        </ul>
+    </div>
+    <div data-am-widget="titlebar" class="am-titlebar am-titlebar-multi">
+        <h2 class="am-titlebar-title">联系方式</h2>
+        <nav class="am-titlebar-nav">
+           
+        </nav>
+    </div>
+    <article data-am-widget="paragraph" class="am-paragraph am-paragraph-default"
+             data-am-paragraph="{ tableScrollable: true, pureview: true }">
+        <p style="color:#999999">联系人:{$the.truename}</p>
+      
+            <p style="color:#999999">手机:{$the.mobile}</p>
+        
+            <p style="color:#999999">座机:{$the.phone}</p>
+     
+            <p style="color:#999999">地址:{$the.address}</p>
+</article>    
+    <footer class="am-margin-top">
+        <hr />
+        <p class="am-text-center">
+            <small>by Yehome.cn 青龙建材 Team.</small>
+        </p>
+    </footer>
+    <!-- 以上页面内容 开发时删除 -->
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="{$sys.base}assets/js/polyfill/rem.min.js"></script>
+    <script src="{$sys.base}assets/js/polyfill/respond.min.js"></script>
+    <script src="{$sys.base}assets/js/amazeui.legacy.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="{$sys.base}assets/js/jquery.min.js"></script>
+    <script src="{$sys.base}assets/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+</body>
+</html>

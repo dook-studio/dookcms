@@ -1,0 +1,111 @@
+﻿body
+{
+	background-color:#f4fbff;
+}
+.back_southidc
+{
+    color: #000000;
+    background-color: #ECF5FF;
+}
+.table_southidc
+{
+    background-color: #ecf5ff;
+    width:100%;
+    clear:both; 
+    display:block;
+    overflow:hidden;
+}
+.td_southidc
+{
+    background-color: #F2F8FF;
+}
+.tr_southidc
+{
+    background-color:#F4FBFF; 
+    height:20px;
+    line-height:20px;
+}
+.t1
+{
+    font: 12px 宋体;
+    color: #000000;
+}
+.t2
+{
+    font: 12px 宋体;
+    color: #ffffff;
+}
+.t3
+{
+    font: 12px 宋体;
+    color: #ffff00;
+}
+.t4
+{
+    font: 12px 宋体;
+    color: #800000;
+}
+.t5
+{
+    font: 12px 宋体;
+    color: #191970;
+}
+.szok.org:hover
+{
+    font-unline: yes;
+    font-family: "宋体";
+    color: #FFFFFF;
+    text-decoration: underline;
+    background-color: #CCCCCC;
+}
+td
+{
+    font-size: 12px;
+}
+a:link
+{
+    color: #000000;
+    text-decoration: none;
+}
+a:active
+{
+    color: #000000;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #000000;
+    text-decoration: none;
+}
+
+.special
+{
+    color:#ff0000;
+    font-weight:bold;
+}
+.selbt {	
+    float:left;
+    width:120px;
+    margin:2px 0px 2px 3px;
+    text-align:center;
+    line-height:25px;
+    background-color:#f4f9ff;
+}
+.helpdiv {
+    float:left;
+    display:none;
+    border: 1px dashed #ecf5ff;
+    background-color: #f4fbff;
+    width:100%;
+    padding:5px;
+    clear:both;
+}
+
+.tab { line-height: 30px; padding-left: 5px; margin-top: 10px; border-bottom:2px solid #d2e6fa; margin-left:0px; margin-bottom:0px;}
+.tab ul,.tab ul li{ margin:0px; list-style:none;}
+.tab li { list-style:none; margin-top: 0px; margin-right: 3px; margin-bottom: -1px; margin-left: 0px; float: left; }
+.tab span { cursor:pointer; padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; border:1px solid #b0d3ee; border-bottom:1px solid #d2e6fa; display: block; background-color:#ffffff; }
+.tab span.selected { border-bottom-color: #d2e6fa; background-color:#d2e6fa; font-weight:bold; }
+/*.tab span.selected { border-bottom-color: #fff; background-color:#d2e6fa; font-weight:bold; }*/
+.cl:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.cl { zoom:1; }

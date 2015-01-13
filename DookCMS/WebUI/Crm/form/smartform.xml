@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<smartform>
+  <form id="8">
+    <config><![CDATA[{"jsonstr":"hfg"}]]></config>
+    <colist>
+      <col>  
+        <jsonstr>
+          <![CDATA[{jsonstr:"fdsfd"}]]>
+        </jsonstr>
+        <htmlstr><![CDATA[
+        <input type="text" name="fdfds"  maxlength="3" value="33" placeholder="请输入文字内容"/>
+        ]]>
+        </htmlstr>
+      </col>
+    </colist>
+  </form>
+</smartform>

@@ -1,0 +1,51 @@
+{function var="menulist"  data="sys_menu" filter="parentid=0 or parentid is NULL" method="GetData" type="crm" px="menuid"/}
+<html>
+<head>
+<title>menu</title>
+
+<link rel="stylesheet" href="{$sys.url}/crm/frame/skin/css/base.css" type="text/css" />
+<link rel="stylesheet" href="{$sys.url}/crm/frame/skin/css/menu.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script language='javascript'>var curopenItem = '1';</script>
+<script language="javascript" type="text/javascript" src="{$sys.url}/crm/frame/skin/js/frame/menu.js"></script>
+<base target="main" />
+</head>
+<body target="main">
+<table width='99%' height="100%" border='0' cellspacing='0' cellpadding='0'>
+  <tr>
+    <td style='padding-left:3px;padding-top:8px' valign="top">
+	<!-- Item 1 Strat -->
+    {foreach from="$menulist" item="item"}  
+    <dl class='bitem'>
+        <dt onClick='showHide("items{$item.id}")'><b>{$item.menuname}</b></dt>
+        <dd style='display:block' class='sitem' id='items{$item.id}'>
+          <ul class='sitemu'>
+          
+          {set var="filter" value="$item.menuid" format="parentid={0}"/}
+          {function var="clist"  data="sys_menu" filter="$filter" method="GetData" type="crm"/}
+    {foreach from="$clist" item="citem"}  
+    <li><a href='{$citem.path}' target='main'>{$citem.menuname}</a> </li>
+    {/foreach}
+        
+            <!--<li>
+              <div class='items'>
+                <div class='fllct'><a href='archives.html' target='main'>网站栏目管理</a></div>
+                <div class='flrct'> <a href='archives.html' target='main'><img src='skin/images/frame/gtk-sadd.png' alt='创建栏目' title='创建栏目'/></a> </div>
+              </div>
+            </li>
+            <li><a href='archives.html' target='main'>所有档案列表</a> </li>
+            <li>
+              <div class='items'>
+                <div class='fllct'><a href='archives.html' target='main'>内容回收站</a></div>
+                <div class='flrct'> <a href='archives.html' target='main'><img src='skin/images/frame/gtk-del.png' alt='清空回收站' title='清空回收站'/></a> </div>
+              </div>
+            </li>-->
+          </ul>
+        </dd>
+      </dl>
+    {/foreach}      
+	  </td>
+  </tr>
+</table>
+</body>
+</html>
