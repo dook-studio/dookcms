@@ -74,9 +74,8 @@ method="GetData" data="viewFormParas" type="index" filter="$filter1" px="px" /}
             {#if var="url.pkid.0" value="" compare="!="}
             $.get("/ashx/crmop.ashx?ac=getsingledata",{tbname:"{$curform.rows.0.tablename}",strwhere:"{$curform.rows.0.pk}={$url.pkid.0}",encodestr:"all"},function(res)
             {
-                    res=res.replace("\r","\\r");
-                    res=res.replace("\n","\\n");
-                    var re=eval(res);      
+                    res=res.replace(/\n|\r/g,"\\r\\n"); 
+                    var re=eval(res);                          
                     //alert(re);
                     //text,password,textarea,hidden,select.
                    

@@ -22,7 +22,7 @@ namespace Common.DEncrypt
         /// <returns></returns>
 		public static string Encrypt(string Text) 
 		{
-			return Encrypt(Text,"cms.mou18.com");
+            return Encrypt(Text, "dukeychafangzhan");
 		}
 		/// <summary> 
 		/// 加密数据 
@@ -61,7 +61,7 @@ namespace Common.DEncrypt
         /// <returns></returns>
 		public static string Decrypt(string Text) 
 		{
-            return Decrypt(Text, "cms.mou18.com");
+            return Decrypt(Text, "dukeychafangzhan");
 		}
 		/// <summary> 
 		/// 解密数据 

@@ -10,8 +10,11 @@ using System;
 using System.Web;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Web.SessionState;
+using System.Collections.Generic;
+using System.Linq;
 
-public class imageManager : IHttpHandler
+public class imageManager : IHttpHandler, IRequiresSessionState
 {
 
     public void ProcessRequest(HttpContext context)
@@ -19,6 +22,12 @@ public class imageManager : IHttpHandler
         context.Response.ContentType = "text/plain";
 
         string[] paths = { "/upload" }; //需要遍历的目录列表，最好使用缩略图地址，否则当网速慢时可能会造成严重的延时
+        if (context.Session["UserId"] != null)
+        {
+            paths=new string[]{"/upload/user/"+context.Session["UserId"]};
+        }
+      
+        
         string[] filetype = { ".gif", ".png", ".jpg", ".jpeg", ".bmp" };                //文件允许格式
 
         string action = context.Server.HtmlEncode(context.Request["action"]);
@@ -30,46 +39,21 @@ public class imageManager : IHttpHandler
             foreach (string path in paths)
             {
                 DirectoryInfo info = new DirectoryInfo(context.Server.MapPath(path));
-                if (info.Exists)
+                List<FileInfo> list=new List<FileInfo>();
+                getAllFiles(context.Server.MapPath(path),ref list);
+                 var sortedList = list.OrderByDescending(a => a.CreationTime);
+                //这个时候会排序
+                foreach (FileInfo fi in sortedList.ToList())
                 {
-                    System.Collections.Generic.List<DirectoryInfo> list = new System.Collections.Generic.List<DirectoryInfo>();
-                    GetAllDir(info, ref list);
-                    foreach (DirectoryInfo item in list)
-                    {
-                        foreach (FileInfo fi in item.GetFiles())
-                        {
-                            if (Array.IndexOf(filetype, fi.Extension) != -1)
-                            {
-                                //这里遍历不全,还有缺陷钟健2013年7月4日
-                                str += path + "/" + item.Parent.Parent.Name + "/" + item.Parent.Name + "/" + item.Name + "/" + fi.Name + "ue_separate_ue";
-                            }
-                        }
+                    if (Array.IndexOf(filetype, fi.Extension) != -1)
+                    {                      
+                       string dir = context.Server.MapPath(path);
+                        string gg=fi.FullName.Replace(dir,"").Replace(@"\","/");
+                        str +=path+ gg + "ue_separate_ue";
+                        //这里遍历不全,还有缺陷钟健2013年7月4日
+                        //str += path + "/" + item.Parent.Parent.Name + "/" + item.Parent.Name + "/" + item.Name + "/" + fi.Name + "ue_separate_ue";
                     }
-                    //本目录的文件
-                    foreach (FileInfo fi in info.GetFiles())
-                    {
-                        if (Array.IndexOf(filetype, fi.Extension) != -1)
-                        {
-                            str += path + "/" + fi.Name + "ue_separate_ue";
-                        }
-                    }
-
                 }
-                //目录验证
-                //if (info.Exists)
-                //{
-                //    DirectoryInfo[] infoArr = info.GetDirectories();
-                //    foreach (DirectoryInfo tmpInfo in infoArr)
-                //    {
-                //        foreach (FileInfo fi in tmpInfo.GetFiles())
-                //        {
-                //            if (Array.IndexOf(filetype, fi.Extension) != -1)
-                //            {
-                //                str += path+"/" + tmpInfo.Name + "/" + fi.Name + "ue_separate_ue";
-                //            }
-                //        }
-                //    }
-                //}
             }
 
             context.Response.Write(str);
@@ -87,9 +71,35 @@ public class imageManager : IHttpHandler
                 GetAllDir(item, ref list);
             }
         }
+    }    
+    public void getAllFiles(string directory,ref List<System.IO.FileInfo> list) //获取指定的目录中的所有文件（包括文件夹）
+    {
+        getFiles(directory,ref list);//获取指定的目录中的所有文件（不包括文件夹）
+        getDirectory(directory,ref list);//获取指定的目录中的所有目录（文件夹）
+    }
+        
+    public void getFiles(string directory,ref List<System.IO.FileInfo> list) //获取指定的目录中的所有文件（不包括文件夹）
+    {
+        string[] path = System.IO.Directory.GetFiles(directory);
+        FileInfo[] fs=new DirectoryInfo(directory).GetFiles();
+        foreach (FileInfo item in fs)
+	    {
+		     list.Add(item);
+	    }
     }
 
-
+    public void getDirectory(string directory, ref List<System.IO.FileInfo> list) //获取指定的目录中的所有目录（文件夹）
+    {
+        string[] directorys = System.IO.Directory.GetDirectories(directory);
+        if (directorys.Length <= 0) //如果该目录总没有其他文件夹
+            return;
+        else
+        {
+            for (int i = 0; i < directorys.Length; i++)
+                getAllFiles(directorys[i],ref list);
+        }
+    }
+    
     public bool IsReusable
     {
         get

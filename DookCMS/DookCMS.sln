@@ -25,8 +25,9 @@ Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "WebUI_deploy", "WebUI_deplo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteDAL", "SQLiteDAL\SQLiteDAL.csproj", "{E93922BB-3D49-422C-B95E-CF42B68DDDC8}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "WebUI\", "{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "localhost", "http://localhost:27241", "{18937860-D1A4-4E0A-85E4-B339DA3BD67C}"
 	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{FC3254C9-F0FD-4CAB-AD0E-89FBF7CE7EA2}|Dukey.AccessDAL.dll;{D008443F-7DF6-425E-9852-15112E4CF090}|Dukey.DBUtility.dll;{BE54FDFF-3C56-4FD1-A266-BA84BEDE2BF8}|Dukey.IDAL.dll;{26E2E721-3AC0-48E1-85A4-650AF916CAA7}|Dukey.Model.dll;{CE98C812-DC12-483D-9D7A-CA3AEC6647C0}|Dukey.BLL.dll;{695D694D-CDD0-44F3-9406-42542C541F1E}|Dukey.DALFactory.dll;{C02CE1C2-2329-4321-8D1C-D62EFC227E60}|Dukey.Updater.dll;{277B6F7F-24D0-443D-9E6D-084FEADD52D2}|Dukey.SQLServerDAL.dll;{E93922BB-3D49-422C-B95E-CF42B68DDDC8}|Dukey.SQLiteDAL.dll;{E3D8759A-C5EB-402D-9F10-F5C6029A8D1A}|Dukey.Common.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/WebUI"
@@ -43,7 +44,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebUI", "WebUI\", "{6DE04AD
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3795"
+		SlnRelativePath = "WebUI\"
 	EndProjectSection
 EndProject
 Global
@@ -120,12 +121,12 @@ Global
 		{E93922BB-3D49-422C-B95E-CF42B68DDDC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E93922BB-3D49-422C-B95E-CF42B68DDDC8}.只调试|Any CPU.ActiveCfg = Release|Any CPU
 		{E93922BB-3D49-422C-B95E-CF42B68DDDC8}.只调试|Any CPU.Build.0 = Release|Any CPU
-		{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}.只调试|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DE04AD1-7C98-44CA-A6C1-4F3D46CB143D}.只调试|Any CPU.Build.0 = Debug|Any CPU
+		{18937860-D1A4-4E0A-85E4-B339DA3BD67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18937860-D1A4-4E0A-85E4-B339DA3BD67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18937860-D1A4-4E0A-85E4-B339DA3BD67C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{18937860-D1A4-4E0A-85E4-B339DA3BD67C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{18937860-D1A4-4E0A-85E4-B339DA3BD67C}.只调试|Any CPU.ActiveCfg = Debug|Any CPU
+		{18937860-D1A4-4E0A-85E4-B339DA3BD67C}.只调试|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

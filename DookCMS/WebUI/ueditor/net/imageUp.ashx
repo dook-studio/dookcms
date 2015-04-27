@@ -5,8 +5,8 @@ using System;
 using System.Web;
 using System.IO;
 using System.Collections;
-
-public class imageUp : IHttpHandler
+using System.Web.SessionState;
+public class imageUp : IHttpHandler, IRequiresSessionState
 {
     public void ProcessRequest(HttpContext context)
     {
@@ -24,6 +24,11 @@ public class imageUp : IHttpHandler
 
             string pathbase = "/upload/";
 
+            //判断如果登录就用登录后的.
+            if (context.Session["UserId"] != null)
+            {
+                pathbase += "user/" + context.Session["UserId"] + "/";
+            }
 
             info = up.upFile(context, pathbase, filetype, size);                   //获取上传状态
 
